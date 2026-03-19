@@ -10,8 +10,9 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'python3 -m pip install flask pytest'
-                sh 'pytest'
+                sh 'python3 -m venv venv'
+                sh '. venv/bin/activate && pip install flask pytest'
+                sh '. venv/bin/activate && pytest'
             }
         }
 
